@@ -42,7 +42,10 @@ Now you got two options:
 	
 	// example: get organization by its name
     Organization org = trello.getOrganization("fogcreek");
-
+    
+    POST /1/cards/[card_id]/actions/comments
+    POST /1/lists
+    PUT /1/cards/[card_id]
 
 <table>
   <tr><th>Method</th><th>Version</th></tr>
@@ -101,14 +104,14 @@ Now you got two options:
 <tr><td>GET /1/cards/[card_id]/list                        </td><td>IMPLEMENTED</td></tr>
 <tr><td>GET /1/cards/[card_id]/list/[field]                </td><td>TODO</td></tr>
 <tr><td>GET /1/cards/[card_id]/members                     </td><td>IMPLEMENTED</td></tr>
-<tr><td>PUT /1/cards/[card_id]                             </td><td>TODO</td></tr>
+<tr><td>PUT /1/cards/[card_id]                             </td><td>IMPLEMENTED</td></tr>
 <tr><td>PUT /1/cards/[card_id]/closed                      </td><td>TODO</td></tr>
 <tr><td>PUT /1/cards/[card_id]/desc                        </td><td>TODO</td></tr>
 <tr><td>PUT /1/cards/[card_id]/due                         </td><td>TODO</td></tr>
-<tr><td>PUT /1/cards/[card_id]/idList                      </td><td>TODO</td></tr>
+<tr><td>PUT /1/cards/[card_id]/idList                      </td><td>TODO: check</td></tr>
 <tr><td>PUT /1/cards/[card_id]/name                        </td><td>TODO</td></tr>
 <tr><td>POST /1/cards                                      </td><td>IMPLEMENTED</td></tr>
-<tr><td>POST /1/cards/[card_id]/actions/comments           </td><td>TODO</td></tr>
+<tr><td>POST /1/cards/[card_id]/actions/comments           </td><td>IMPLEMENTED</td></tr>
 <tr><td>POST /1/cards/[card_id]/attachments                </td><td>TODO</td></tr>
 <tr><td>POST /1/cards/[card_id]/checklists                 </td><td>TODO</td></tr>
 <tr><td>POST /1/cards/[card_id]/labels                     </td><td>TODO</td></tr>
@@ -145,7 +148,7 @@ Now you got two options:
 <tr><td>PUT /1/lists/[list_id]                                                </td><td>TODO</td></tr>
 <tr><td>PUT /1/lists/[list_id]/closed                                         </td><td>TODO</td></tr>
 <tr><td>PUT /1/lists/[list_id]/name                                           </td><td>TODO</td></tr>
-<tr><td>POST /1/lists                                                         </td><td>TODO</td></tr>
+<tr><td>POST /1/lists                                                         </td><td>IMPLEMENTED</td></tr>
 <tr><td>POST /1/lists/[list_id]/cards                                         </td><td>TODO</td></tr>
 
 <tr><th colspan="2">Members</th></tr>
