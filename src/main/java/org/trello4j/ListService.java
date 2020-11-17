@@ -5,6 +5,8 @@ import org.trello4j.model.Board;
 import org.trello4j.model.Card;
 import org.trello4j.model.List;
 
+import java.util.Map;
+
 /**
  * The Interface ListService.
  * 
@@ -47,5 +49,8 @@ public interface ListService {
 	 * @return the cards by list
 	 */
 	java.util.List<Card> getCardsByList(String listId, String... filter);
+
+
+	List createList(String name, String idBoard, Map<String, String> keyValueMap);
 
 }

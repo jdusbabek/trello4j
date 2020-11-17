@@ -22,6 +22,8 @@ public interface CardService {
 
 	List<Action> getActionsByCard(String cardId);
 
+	Action createComment(String idCard, String text, Map<String, String> keyValueMap);
+
 	List<Attachment> getAttachmentsByCard(String cardId);
 
 	Board getBoardByCard(String cardId, String... filter);
@@ -33,6 +35,8 @@ public interface CardService {
 	org.trello4j.model.List getListByCard(String cardId, String... filter);
 
 	List<Member> getMembersByCard(String cardId);
+
+	Card moveCard (String idCard, String idList, Map<String, String> keyValueMap);
 
 	/**
 	 * Add a new {@link Card} with the optional keyValue pairs.

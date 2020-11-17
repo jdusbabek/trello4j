@@ -564,6 +564,68 @@ public class TrelloImpl implements Trello {
 		}, doPost(url, keyValueMap));
 	}
 
+
+	@Override
+	public org.trello4j.model.List createList(String name, String idBoard, Map<String, String> keyValueMap) {
+		validateObjectId(idBoard);
+
+		final String url = TrelloURL
+				.create(apiKey, TrelloURL.LIST_POST_URL)
+				.token(token)
+				.build();
+		if (keyValueMap == null) {
+			keyValueMap = new HashMap<String, String>();
+		}
+		keyValueMap.put("name", name);
+		keyValueMap.put("idBoard", idBoard);
+
+		return trelloObjFactory.createObject(
+				new TypeToken<org.trello4j.model.List>() {
+				},
+				doPost(url, keyValueMap));
+	}
+
+
+	@Override
+	public Action createComment(String idCard, String text, Map<String, String> keyValueMap) {
+		validateObjectId(idCard);
+
+		final String url = TrelloURL
+				.create(apiKey, TrelloURL.CARD_COMMENT_URL, idCard)
+				.token(token)
+				.build();
+		if (keyValueMap == null) {
+			keyValueMap = new HashMap<String, String>();
+		}
+		keyValueMap.put("text", text);
+
+		return trelloObjFactory.createObject(
+				new TypeToken<Action>() {
+				},
+				doPost(url, keyValueMap));
+	}
+
+
+	@Override
+	public Card moveCard(String idCard, String idList, Map<String, String> keyValueMap) {
+		validateObjectId(idList);
+		validateObjectId(idCard);
+
+		final String url = TrelloURL
+				.create(apiKey, TrelloURL.CARD_PUT_URL, idCard)
+				.token(token)
+				.build();
+		if (keyValueMap == null) {
+			keyValueMap = new HashMap<String, String>();
+		}
+		keyValueMap.put("idList", idList);
+
+		return trelloObjFactory.createObject(
+				new TypeToken<Card>() {
+				},
+				doPut(url, keyValueMap));
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -1195,8 +1257,8 @@ public class TrelloImpl implements Trello {
 		return doRequest(url, METHOD_GET);
 	}
 
-	private InputStream doPut(String url) {
-		return doRequest(url, METHOD_PUT);
+	private InputStream doPut(String url, Map<String, String> map) {
+		return doRequest(url, METHOD_PUT, map);
 	}
 
 	private InputStream doPost(String url, Map<String, String> map) {
@@ -1224,6 +1286,11 @@ public class TrelloImpl implements Trello {
 			conn.setRequestProperty("Accept-Encoding", "gzip, deflate");
             conn.setDoOutput(requestMethod.equals(METHOD_POST) || requestMethod.equals(METHOD_PUT));
             conn.setRequestMethod(requestMethod);
+            
+            if (requestMethod.equals(METHOD_PUT)) {
+            	conn.setRequestProperty("content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+			}
+            
 
             if(map != null && !map.isEmpty()) {
                 StringBuilder sb = new StringBuilder();
