@@ -25,12 +25,12 @@ Please report any issues and/or participate in the development [here](https://tr
 	
 
 ### Get source and build it
-
-    git clone git@github.com:joelso/trello4j.git
+              
+    git clone https://github.com/jdusbabek/trello4j.git
 	cd trello4j
 	mvn install
 
-Now you got two options:
+Now you have two options:
 
 1. Use trello4j from your local maven repo, add dependency groupId: org.trello4j / artifactId: trello4j
 2. Use jar that was built in directory **target/**
@@ -42,10 +42,6 @@ Now you got two options:
 	
 	// example: get organization by its name
     Organization org = trello.getOrganization("fogcreek");
-    
-    POST /1/cards/[card_id]/actions/comments
-    POST /1/lists
-    PUT /1/cards/[card_id]
 
 <table>
   <tr><th>Method</th><th>Version</th></tr>
